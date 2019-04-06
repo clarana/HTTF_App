@@ -75,7 +75,105 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                     'width': '90%'
                 }
             ),
-
+            # Coffee: Q2, F2
+            html.Div(
+                children=[
+                    html.Div(
+                        children=[
+                            'Coffee',
+                            dcc.Slider(
+                                id='Q2',
+                                min=0,
+                                max=20,
+                                value=0,
+                                marks={str(year): str(year) for year in range(0, 21, 5)},
+                            )],
+                        style={
+                            'margin': '10pt',
+                            'width': '40%',
+                            'display': 'inline-block'
+                        }
+                    ),
+                    html.Div(
+                        id='F2',
+                        style={
+                            'margin': '10pt',
+                            'width': '40%',
+                            'display': 'inline-block'
+                        }
+                    )
+                ],
+                style={
+                    # 'display': 'inline-block'
+                    'width': '90%'
+                }
+            ),
+            # Soft Drinks: Q3, F3
+            html.Div(
+                children=[
+                    html.Div(
+                        children=[
+                            'Soft Drinks',
+                            dcc.Slider(
+                                id='Q3',
+                                min=0,
+                                max=20,
+                                value=0,
+                                marks={str(year): str(year) for year in range(0, 21, 5)},
+                            )],
+                        style={
+                            'margin': '10pt',
+                            'width': '40%',
+                            'display': 'inline-block'
+                        }
+                    ),
+                    html.Div(
+                        id='F3',
+                        style={
+                            'margin': '10pt',
+                            'width': '40%',
+                            'display': 'inline-block'
+                        }
+                    )
+                ],
+                style={
+                    # 'display': 'inline-block'
+                    'width': '90%'
+                }
+            ),
+            # Alcohol: Q4, F4
+            html.Div(
+                children=[
+                    html.Div(
+                        children=[
+                            'Alcohol',
+                            dcc.Slider(
+                                id='Q4',
+                                min=0,
+                                max=20,
+                                value=0,
+                                marks={str(year): str(year) for year in range(0, 21, 5)},
+                            )],
+                        style={
+                            'margin': '10pt',
+                            'width': '40%',
+                            'display': 'inline-block'
+                        }
+                    ),
+                    html.Div(
+                        id='F4',
+                        style={
+                            'margin': '10pt',
+                            'width': '40%',
+                            'display': 'inline-block'
+                        }
+                    )
+                ],
+                style={
+                    # 'display': 'inline-block'
+                    'width': '90%'
+                }
+            ),
             # 'Coffee',
             # dcc.Slider(
             #     id='Q2',
@@ -119,15 +217,29 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
 ])
 
 @app.callback(
-    Output('F1', component_property='children'),
-    [Input('Q1', 'value')
+    [Output('F1', component_property='children'),
+     Output('F2', component_property='children'),
+     Output('F3', component_property='children'),
+     Output('F4', component_property='children')],
+    [Input('Q1', 'value'),
+     Input('Q2', 'value'),
+     Input('Q3', 'value'),
+     Input('Q4', 'value')
      ])
-def update(q1):
-    out = ''
+def update(q1, q2, q3, q4):
+    out1 = ''
+    out2 = ''
+    out3 = ''
+    out4 = ''
     if int(q1) > 0:
-        out = 'Water is the “greenest” drink! Producing one liter of bottled water requires only one liter of water (plus transportation and distribution)'
-
-    return out
+        out1 = 'Water is the “greenest” drink! Producing one liter of bottled water requires only one liter of water (plus transportation and distribution)'
+    if int(q2) > 0:
+        out2 = 'COFFEE'
+    if int(q3) > 0:
+        out3 = 'SOFT DRINKS'
+    if int(q4) > 0:
+        out4 = 'ALC'
+    return out1, out2, out3, out4
 
 
 if __name__ == '__main__':
