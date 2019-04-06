@@ -257,7 +257,7 @@ def update(q1, q2, q3, q4):
     if int(q4) > 0:
         out4 = 'ALC'
     return out1, out2, out3, out4, { 'data': 
-        go.Pie(values=[green, red], labels=['Green points', 'Red points'])
+        [go.Pie(values=[green, red], labels=['Green points', 'Red points'])]
     }
 
 
