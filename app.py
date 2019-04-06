@@ -33,6 +33,8 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                 'textAlign': 'center',
                 'color': colors['text']
         }),
+
+        # Drinks
         html.Div([
             html.H2(
                 children='Drinks'
@@ -65,8 +67,8 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                         id='F1',
                         style={
                             'margin': '10pt',
-                            'width': '40%',
-                            'display': 'inline-block'
+                            'width': '50%',
+                            'display': 'inline-block',
                         }
                     )
                 ],
@@ -98,8 +100,8 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                         id='F2',
                         style={
                             'margin': '10pt',
-                            'width': '40%',
-                            'display': 'inline-block'
+                            'width': '50%',
+                            'display': 'inline-block',
                         }
                     )
                 ],
@@ -131,7 +133,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                         id='F3',
                         style={
                             'margin': '10pt',
-                            'width': '40%',
+                            'width': '50%',
                             'display': 'inline-block'
                         }
                     )
@@ -164,7 +166,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                         id='F4',
                         style={
                             'margin': '10pt',
-                            'width': '40%',
+                            'width': '50%',
                             'display': 'inline-block'
                         }
                     )
@@ -173,45 +175,47 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                     # 'display': 'inline-block'
                     'width': '90%'
                 }
-            ),
-            # 'Coffee',
-            # dcc.Slider(
-            #     id='Q2',
-            #     min=0,
-            #     max=20,
-            #     value=0,
-            #     marks={str(year): str(year) for year in range(0, 21, 5)},
-            # ),
-            # 'Tea',
-            # dcc.Slider(
-            #     id='Q3',
-            #     min=0,
-            #     max=20,
-            #     value=0,
-            #     marks={str(year): str(year) for year in range(0, 21, 5)},
-            # ),
-            # 'Soft drinks',
-            # dcc.Slider(
-            #     id='Q4',
-            #     min=0,
-            #     max=20,
-            #     value=0,
-            #     marks={str(year): str(year) for year in range(0, 21, 5)},
-            # ),
-            # 'Alcohol (per week)',
-            # dcc.Slider(
-            #     id='Q5',
-            #     min=0,
-            #     max=20,
-            #     value=0,
-            #     marks={str(year): str(year) for year in range(0, 21, 5)},
-            # ),
+            ), 
         ],
         style={
             'width': '90%',
             'padding': '10pt'
         }),
-    ])
+
+        # Transport
+        html.Div(
+            [
+                html.H2(
+                    children='Transportation'
+                ),
+                html.Div(
+                [
+                    html.H3(
+                        children='How many miles do you drive in your car per week?',
+                        style={
+                            'font-weight': 'normal'
+                        }
+                    ),
+                    dcc.Slider(
+                        id='Q5',
+                        min=0,
+                        max=20,
+                        value=0,
+                        marks={str(i): str(i) for i in range(0, 201, 50)},
+                    ),
+                ],
+                style={
+                    'margin': '10pt',
+                    'width': '40%',
+                    'display': 'inline-block'
+                })
+            ],
+            style={
+                'width': '90%',
+                'padding': '10pt'
+            }
+        )
+    ]),
 
 
 ])
