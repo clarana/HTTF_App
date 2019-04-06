@@ -19,3 +19,8 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+if 'survery' in settings.INSTALLED_APPS:
+    urlpatterns += [
+        url(r'^survery/', include('survey.urls'))
+    ]
