@@ -64,18 +64,22 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                             )],
                         style={
                             'margin': '10pt',
+                            'width': '40%',
                             'display': 'inline-block'
                         }
                     ),
                     html.Div(
-                        children='asdfasdfasdf',
+                        children='asdfasdfasdf', # will hold variable now
                         style={
+                            'margin': '10pt',
+                            'width': '40%',
                             'display': 'inline-block'
                         }
                     )
                 ],
                 style={
                     # 'display': 'inline-block'
+                    'width': '90%'
                 }
             ),
 
