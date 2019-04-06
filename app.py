@@ -22,6 +22,8 @@ colors = {
     'text': '#333333'
 }
 
+
+
 available_indicators = df['Indicator Name'].unique()
 
 app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
@@ -214,6 +216,11 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                 'width': '90%',
                 'padding': '10pt'
             }
+        ),
+
+        # Figure
+        html.Div(
+            dcc.Graph(id='Pie')
         )
     ]),
 
@@ -224,17 +231,23 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
     [Output('F1', component_property='children'),
      Output('F2', component_property='children'),
      Output('F3', component_property='children'),
-     Output('F4', component_property='children')],
+     Output('F4', component_property='children'),
+     Output('Pie', 'figure')
+     ],
     [Input('Q1', 'value'),
      Input('Q2', 'value'),
      Input('Q3', 'value'),
      Input('Q4', 'value')
      ])
 def update(q1, q2, q3, q4):
+    green = int(q2) + int(q3) + int(q4) - int(q1)
+    red = 100-green
+
     out1 = ''
     out2 = ''
     out3 = ''
     out4 = ''
+
     if int(q1) > 0:
         out1 = 'Water is the “greenest” drink! Producing one liter of bottled water requires only one liter of water (plus transportation and distribution)'
     if int(q2) > 0:
@@ -243,7 +256,9 @@ def update(q1, q2, q3, q4):
         out3 = 'SOFT DRINKS'
     if int(q4) > 0:
         out4 = 'ALC'
-    return out1, out2, out3, out4
+    return out1, out2, out3, out4, { 'data': 
+        go.Pie(values=[green, red], labels=['Green points', 'Red points'])
+    }
 
 
 if __name__ == '__main__':
