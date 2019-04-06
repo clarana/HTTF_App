@@ -240,8 +240,8 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
      Input('Q4', 'value')
      ])
 def update(q1, q2, q3, q4):
-    green = int(q2) + int(q3) + int(q4) - int(q1)
-    red = 100-green
+    red = int(q2) + int(q3) + int(q4) - int(q1)
+    green = 100-red
 
     out1 = ''
     out2 = ''
@@ -251,13 +251,16 @@ def update(q1, q2, q3, q4):
     if int(q1) > 0:
         out1 = 'Water is the “greenest” drink! Producing one liter of bottled water requires only one liter of water (plus transportation and distribution)'
     if int(q2) > 0:
-        out2 = 'COFFEE'
+        out2 = 'It takes 140 liters of water to produce one cup of coffee, and 50 cups of water to grow every teaspoon of sugar'
     if int(q3) > 0:
-        out3 = 'SOFT DRINKS'
+        out3 = 'It takes much more water than this to produce [this amount] of your drink of choice! What’s more, it takes 50 cups of water to grow every teaspoon of sugar, and the energy costs of transporting it are also high. One glass of fruit juice or milk requires 170 to 200 liters of water to produce.'
     if int(q4) > 0:
-        out4 = 'ALC'
+        out4 = 'A glass of beer takes 75 liters of water to produce, and a glass of wine takes 120 liters of water to produce'
     return out1, out2, out3, out4, { 'data': 
-        [go.Pie(values=[green, red], labels=['Green points', 'Red points'])]
+        [go.Pie(values=[red, green], 
+                labels=['Red points', 'Green points'],
+                marker=dict(colors=['#FF0000', '#00FF00'])
+        )]
     }
 
 
