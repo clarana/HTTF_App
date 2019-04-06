@@ -50,24 +50,69 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                     'font-weight': 'normal'
                 }
             ),
-            'Water',
-            dcc.Slider(
-                id='Q1',
-                min=0,
-                max=20,
-                value=0,
-                marks={str(year): str(year) for year in range(0, 21, 5)},
+            html.Div(
+                children=[
+                    html.Div(
+                        children=[
+                            'Water',
+                            dcc.Slider(
+                                id='Q1',
+                                min=0,
+                                max=20,
+                                value=0,
+                                marks={str(year): str(year) for year in range(0, 21, 5)},
+                            )],
+                        style={
+                            'margin': '10pt',
+                            'display': 'inline-block'
+                        }
+                    ),
+                    html.Div(
+                        children='asdfasdfasdf',
+                        style={
+                            'display': 'inline-block'
+                        }
+                    )
+                ],
+                style={
+                    # 'display': 'inline-block'
+                }
             ),
-            'Water',
-            dcc.Slider(
-                id='Q2',
-                min=0,
-                max=20,
-                value=0,
-                marks={str(year): str(year) for year in range(0, 21, 5)},
-            ),
+
+            # 'Coffee',
+            # dcc.Slider(
+            #     id='Q2',
+            #     min=0,
+            #     max=20,
+            #     value=0,
+            #     marks={str(year): str(year) for year in range(0, 21, 5)},
+            # ),
+            # 'Tea',
+            # dcc.Slider(
+            #     id='Q3',
+            #     min=0,
+            #     max=20,
+            #     value=0,
+            #     marks={str(year): str(year) for year in range(0, 21, 5)},
+            # ),
+            # 'Soft drinks',
+            # dcc.Slider(
+            #     id='Q4',
+            #     min=0,
+            #     max=20,
+            #     value=0,
+            #     marks={str(year): str(year) for year in range(0, 21, 5)},
+            # ),
+            # 'Alcohol (per week)',
+            # dcc.Slider(
+            #     id='Q5',
+            #     min=0,
+            #     max=20,
+            #     value=0,
+            #     marks={str(year): str(year) for year in range(0, 21, 5)},
+            # ),
         ],
-        style={'width': '40%', 'display': 'inline-block', 'margin': '20pt'}),
+        style={'width': '90%'}),
     ])
 
 
