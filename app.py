@@ -29,17 +29,10 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         html.H1(
             children='Calculate your UVA Green Score',
             style={
+                'padding': '20pt',
                 'textAlign': 'center',
                 'color': colors['text']
         }),
-
-        html.Div(
-            children='''Answer questions and get feedback about your daily habits!''',
-            style={
-                'textAlign': 'center',
-                'color': colors['text']
-        }),
-
         html.Div([
             html.H2(
                 children='Drinks'
@@ -69,7 +62,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
                         }
                     ),
                     html.Div(
-                        children='asdfasdfasdf', # will hold variable now
+                        id='F1',
                         style={
                             'margin': '10pt',
                             'width': '40%',
@@ -116,46 +109,25 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
             #     marks={str(year): str(year) for year in range(0, 21, 5)},
             # ),
         ],
-        style={'width': '90%'}),
+        style={
+            'width': '90%',
+            'padding': '10pt'
+        }),
     ])
 
 
 ])
 
-# @app.callback(
-#     Output('indicator-graphic', 'figure'),
-#     [Input('Q1')
-#      ])
-# def update_graph(xaxis_column_name, yaxis_column_name,
-#                  xaxis_type, yaxis_type,
-#                  year_value):
-#
-#
-#     return {
-#         # 'data': [go.Scatter(
-#         #     x=dff[dff['Indicator Name'] == xaxis_column_name]['Value'],
-#         #     y=dff[dff['Indicator Name'] == yaxis_column_name]['Value'],
-#         #     text=dff[dff['Indicator Name'] == yaxis_column_name]['Country Name'],
-#         #     mode='markers',
-#         #     marker={
-#         #         'size': 15,
-#         #         'opacity': 0.5,
-#         #         'line': {'width': 0.5, 'color': 'white'}
-#         #     }
-#         # )],
-#         # 'layout': go.Layout(
-#         #     xaxis={
-#         #         'title': xaxis_column_name,
-#         #         'type': 'linear' if xaxis_type == 'Linear' else 'log'
-#         #     },
-#         #     yaxis={
-#         #         'title': yaxis_column_name,
-#         #         'type': 'linear' if yaxis_type == 'Linear' else 'log'
-#         #     },
-#         #     margin={'l': 40, 'b': 40, 't': 10, 'r': 0},
-#         #     hovermode='closest'
-#         # )
-#     }
+@app.callback(
+    Output('F1', component_property='children'),
+    [Input('Q1', 'value')
+     ])
+def update(q1):
+    out = ''
+    if int(q1) > 0:
+        out = 'Water is the “greenest” drink! Producing one liter of bottled water requires only one liter of water (plus transportation and distribution)'
+
+    return out
 
 
 if __name__ == '__main__':
