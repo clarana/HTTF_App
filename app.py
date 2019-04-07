@@ -29,7 +29,7 @@ available_indicators = df['Indicator Name'].unique()
 app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
     html.Div([
         html.H1(
-            children='Calculate your UVA Green Score',
+            children="Hoo's Green?",
             style={
                 'padding': '20pt',
                 'textAlign': 'center',
